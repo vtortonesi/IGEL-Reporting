@@ -14,6 +14,7 @@
 
 $scriptRoot = $PSScriptRoot
 $files = Get-Item  "$scriptRoot\RDL\*.rdl"
+$drillDown = Get-Item "$scriptRoot\Drilldown Reports\*.rdl"
 $execPolicy = Get-ExecutionPolicy
 
 #endregion
@@ -44,8 +45,18 @@ $files | ForEach-Object{
     (Get-Content -Path $_.FullName).Replace('igelums',$schemaName) | Set-Content -Path $_.FullName
 }
 
-Write-Output "Schema name changed in .rdl files"
-start-sleep -Seconds 5 
+Write-Output "Schema name changed in Report .rdl files"
+start-sleep -Seconds 1
+
+#Change database schema name in drill down reports for each .rdl file
+$drillDown | ForEach-Object{
+
+    (Get-Content -Path $_.FullName).Replace('igelums',$schemaName) | Set-Content -Path $_.FullName
+}
+
+Write-Output "Schema name changed in drill down .rdl files"
+start-sleep -Seconds 1
+
 #TO DO - Check the file was modified by looking at lastWriteTime
 
 #Change Execution Policy back to original state
