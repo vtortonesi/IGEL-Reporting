@@ -20,7 +20,7 @@ $execPolicy = Get-ExecutionPolicy
 #endregion
 
 #Check & Change PowerShell Execution policy if needed
-    if($execPolicy - 'Bypass'){
+    if($execPolicy -ne 'Bypass'){
            Set-ExecutionPolicy -ExecutionPolicy Bypass -Force -Scope CurrentUser
     }
 
