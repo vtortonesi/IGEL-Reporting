@@ -144,7 +144,6 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
               <ChartArea Name="Default">
                 <ChartCategoryAxes>
                   <ChartAxis Name="Primary">
-                    <Visible>False</Visible>
                     <Style>
                       <Border>
                         <Color>#5c5c5c</Color>
@@ -401,7 +400,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Top 20 Assets Deployed</Caption>
+                <Caption>Top 10 Assets Deployed</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
