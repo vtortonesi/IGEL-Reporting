@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -27,8 +27,8 @@
      FW.ModelName AS 'Firmware Name',  
      FW.VERSION 'Firmware Version'
 
-FROM igelums.FIRMWARE fw
-JOIN igelums.THINCLIENT tc ON FW.FIRMWAREID = tc.FIRMWAREID
+FROM dbo.FIRMWARE fw
+JOIN dbo.THINCLIENT tc ON FW.FIRMWAREID = tc.FIRMWAREID
 
 WHERE FW.Version = @fwversion</CommandText>
       </Query>

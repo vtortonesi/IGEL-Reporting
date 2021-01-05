@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -20,7 +20,7 @@
         <CommandText>SELECT TOP 10
 Command_ID, Count(*) 'Count of Command'
  
-FROM igelums.V_LOGMSG
+FROM dbo.V_LOGMSG
 GROUP BY COMMAND_ID</CommandText>
       </Query>
       <Fields>
@@ -41,7 +41,7 @@ GROUP BY COMMAND_ID</CommandText>
 COALESCE (Command_ID, 'SEND TC Command') Command,
 Count(*) 'Count of Command'
  
-FROM igelums.V_EVTMESSAGES
+FROM dbo.V_EVTMESSAGES
 GROUP BY COMMAND_ID</CommandText>
       </Query>
       <Fields>
@@ -510,7 +510,7 @@ GROUP BY COMMAND_ID</CommandText>
                         <Actions>
                           <Action>
                             <Drillthrough>
-                              <ReportName>/Drilldown Reports/evtMessages</ReportName>
+                              <ReportName>/IGEL Reporting/Drilldown Reports/evtMessages</ReportName>
                               <Parameters>
                                 <Parameter Name="Command">
                                   <Value>=Fields!Command.Value</Value>
@@ -865,7 +865,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/HomePage</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/HomePage</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -903,7 +903,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/AssetDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/AssetDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -925,7 +925,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/DeviceAssetInfo</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/DeviceAssetInfo</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -945,7 +945,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/DeviceAssignment</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/DeviceAssignment</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -965,7 +965,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/AssetHistoryrdl</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/AssetHistoryrdl</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -985,7 +985,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/TCDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/TCDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1016,7 +1016,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/LoggingDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/LoggingDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1036,7 +1036,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/LoggingEvents</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/LoggingEvents</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1078,7 +1078,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/Profiles</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/Profilesv2</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1098,7 +1098,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/ProfilesAssignedToDeviceGroup</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/ProfilesAssignedToDeviceGroup</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1118,7 +1118,7 @@ GROUP BY COMMAND_ID</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/ProfilesDirectlyAssigned</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/ProfilesDirectlyAssigned</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1397,6 +1397,6 @@ EZXD6HYTPB9mG1gccmKGcWEbacd+xSI2mejCW+QTj+P93ZOwZMPeIlnQK3EBDYdzQLZu2yrZpU6B04YO
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportServerUrl>http://sqldev/reportserver</rd:ReportServerUrl>
+  <rd:ReportServerUrl>http://umswindows/ReportServer</rd:ReportServerUrl>
   <rd:ReportID>b89942cb-a2fe-45c3-9dc4-c3e573fed52d</rd:ReportID>
 </Report>

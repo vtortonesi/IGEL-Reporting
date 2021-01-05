@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -22,7 +22,7 @@ SELECT Top 10
   ai.Device_Name AS 'Asset',
   COUNT(*) AS 'Count'
 
-FROM igelums.Asset_Info ai
+FROM dbo.Asset_Info ai
 
 GROUP By ai.Device_Name
 ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
@@ -96,7 +96,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                         <Actions>
                           <Action>
                             <Drillthrough>
-                              <ReportName>/Drilldown Reports/devicesByAssetCount</ReportName>
+                              <ReportName>/IGEL Reporting/Drilldown Reports/devicesByAssetCount</ReportName>
                               <Parameters>
                                 <Parameter Name="asset">
                                   <Value>=Fields!Asset.Value</Value>
@@ -489,7 +489,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/HomePage</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/HomePage</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -527,7 +527,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/AssetDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/AssetDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -549,7 +549,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/DeviceAssetInfo</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/DeviceAssetInfo</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -569,7 +569,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/DeviceAssignment</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/DeviceAssignment</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -589,7 +589,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/AssetHistoryrdl</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/AssetHistoryrdl</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -609,7 +609,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/TCDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/TCDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -640,7 +640,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/LoggingDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/LoggingDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -660,7 +660,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/LoggingEvents</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/LoggingEvents</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -702,7 +702,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/Profiles</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/Profilesv2</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -722,7 +722,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/ProfilesAssignedToDeviceGroup</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/ProfilesAssignedToDeviceGroup</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -742,7 +742,7 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/ProfilesDirectlyAssigned</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/ProfilesDirectlyAssigned</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -758,6 +758,15 @@ ORDER BY COUNT(ai.DEVICE_ID) DESC</CommandText>
                 <TextRuns>
                   <TextRun>
                     <Value />
+                    <ActionInfo>
+                      <Actions>
+                        <Action>
+                          <Drillthrough>
+                            <ReportName>/IGEL Reporting/RDL/ProfilesDirectlyAssigned</ReportName>
+                          </Drillthrough>
+                        </Action>
+                      </Actions>
+                    </ActionInfo>
                     <Style>
                       <FontWeight>Normal</FontWeight>
                     </Style>
@@ -1020,6 +1029,6 @@ EZXD6HYTPB9mG1gccmKGcWEbacd+xSI2mejCW+QTj+P93ZOwZMPeIlnQK3EBDYdzQLZu2yrZpU6B04YO
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportServerUrl>http://sqldev/reportserver</rd:ReportServerUrl>
+  <rd:ReportServerUrl>http://umswindows/ReportServer</rd:ReportServerUrl>
   <rd:ReportID>b89942cb-a2fe-45c3-9dc4-c3e573fed52d</rd:ReportID>
 </Report>

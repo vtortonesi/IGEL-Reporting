@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -26,8 +26,8 @@
 p.[name] 'Profile Name',
 p.Description 'Profile Description'
 	
-FROM igelums.PROFILES p JOIN igelums.DIRECTORYHASPROFILE dp ON p.profileid = dp.profileid 
-JOIN igelums.DIRECTORIES d ON dp.dirid = d.dirid
+FROM dbo.PROFILES p JOIN dbo.DIRECTORYHASPROFILE dp ON p.profileid = dp.profileid 
+JOIN dbo.DIRECTORIES d ON dp.dirid = d.dirid
 
 WHERE d.[Name] = @devicegroup</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
@@ -47,7 +47,7 @@ WHERE d.[Name] = @devicegroup</CommandText>
       <Query>
         <DataSourceName>IGELDB</DataSourceName>
         <CommandText>SELECT DISTINCT 
-d.[Name] FROM igelums.Directories d
+d.[Name] FROM dbo.Directories d
 ORDER BY d.[Name] ASC</CommandText>
       </Query>
       <Fields>

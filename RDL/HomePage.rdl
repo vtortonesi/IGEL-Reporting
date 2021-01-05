@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -21,8 +21,8 @@
 	   FW.VERSION 'Firmware Version',
 	   COUNT(tc.FirmwareID) AS 'Count of Devices'
 
-FROM igelums.FIRMWARE fw
-JOIN igelums.THINCLIENT tc ON FW.FIRMWAREID = tc.FIRMWAREID
+FROM dbo.FIRMWARE fw
+JOIN dbo.THINCLIENT tc ON FW.FIRMWAREID = tc.FIRMWAREID
 GROUP BY fw.MODELNAME, FW.VERSION</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -47,9 +47,9 @@ GROUP BY fw.MODELNAME, FW.VERSION</CommandText>
         <CommandText>SELECT d.[Name] AS 'Device Group',
 COUNT(*) 'Count of Devices Not Rebooted'
 		
-FROM igelums.THINCLIENT tc 
-JOIN igelums.THINCLIENTISINDIRECTORY tcd  ON tc.TCID = tcd.TCID
-JOIN igelums.DIRECTORIES D ON tcd.DIRID = d.DIRID
+FROM dbo.THINCLIENT tc 
+JOIN dbo.THINCLIENTISINDIRECTORY tcd  ON tc.TCID = tcd.TCID
+JOIN dbo.DIRECTORIES D ON tcd.DIRID = d.DIRID
 		
 WHERE DATEDIFF(dd,LASTBOOTTIME, getdate()) &gt;=90
 
@@ -511,7 +511,7 @@ GROUP BY d.[Name]</CommandText>
                         <Actions>
                           <Action>
                             <Drillthrough>
-                              <ReportName>/Drilldown Reports/deviceFirmwareVersions</ReportName>
+                              <ReportName>/IGEL Reporting/Drilldown Reports/deviceFirmwareVersions</ReportName>
                               <Parameters>
                                 <Parameter Name="fwversion">
                                   <Value>=Fields!Firmware_Version.Value</Value>
@@ -869,7 +869,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/HomePage</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/HomePage</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -907,7 +907,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/AssetDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/AssetDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -929,7 +929,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/DeviceAssetInfo</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/DeviceAssetInfo</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -949,7 +949,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/DeviceAssignment</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/DeviceAssignment</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -969,7 +969,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/AssetHistoryrdl</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/AssetHistoryrdl</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -989,7 +989,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/TCDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/TCDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1020,7 +1020,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/LoggingDetails</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/LoggingDetails</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1040,7 +1040,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/LoggingEvents</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/LoggingEvents</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1082,7 +1082,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/Profiles</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/Profilesv2</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1102,7 +1102,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/ProfilesAssignedToDeviceGroup</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/ProfilesAssignedToDeviceByGroup</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1122,7 +1122,7 @@ GROUP BY d.[Name]</CommandText>
                       <Actions>
                         <Action>
                           <Drillthrough>
-                            <ReportName>/ProfilesDirectlyAssigned</ReportName>
+                            <ReportName>/IGEL Reporting/RDL/ProfilesDirectlyAssigned</ReportName>
                           </Drillthrough>
                         </Action>
                       </Actions>
@@ -1376,6 +1376,6 @@ EZXD6HYTPB9mG1gccmKGcWEbacd+xSI2mejCW+QTj+P93ZOwZMPeIlnQK3EBDYdzQLZu2yrZpU6B04YO
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportServerUrl>http://sqldev/reportserver</rd:ReportServerUrl>
+  <rd:ReportServerUrl>http://umswindows/ReportServer</rd:ReportServerUrl>
   <rd:ReportID>b89942cb-a2fe-45c3-9dc4-c3e573fed52d</rd:ReportID>
 </Report>

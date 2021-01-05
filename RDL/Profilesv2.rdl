@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -27,9 +27,9 @@
           ps.CLASSNAME AS 'Profile Setting',
           ps.PVALUE AS 'Profile Value'
 
-FROM   igelums.PROFILESETTINGS ps  INNER JOIN igelums.PROFILES p ON ps.PROFILEID = p.PROFILEID 
-INNER JOIN igelums.PROFILESTOREDIN prdin ON  p.PROFILEID = prdin.PROFILEID 
-INNER JOIN igelums.PROFILEDIRECTORIES pd ON prdin.PDIRID = pd.PDIRID
+FROM   dbo.PROFILESETTINGS ps  INNER JOIN dbo.PROFILES p ON ps.PROFILEID = p.PROFILEID 
+INNER JOIN dbo.PROFILESTOREDIN prdin ON  p.PROFILEID = prdin.PROFILEID 
+INNER JOIN dbo.PROFILEDIRECTORIES pd ON prdin.PDIRID = pd.PDIRID
 
 WHERE p.[Name] = @ProfileList</CommandText>
       </Query>
@@ -55,7 +55,7 @@ WHERE p.[Name] = @ProfileList</CommandText>
     <DataSet Name="ProfileNames">
       <Query>
         <DataSourceName>IGELDB</DataSourceName>
-        <CommandText>Select [Name] From igelums.PROFILES</CommandText>
+        <CommandText>Select [Name] From dbo.PROFILES</CommandText>
       </Query>
       <Fields>
         <Field Name="Name">

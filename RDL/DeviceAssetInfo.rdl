@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -33,12 +33,12 @@
 	ai.Vendor AS 'Device Vendor',
 	ai.Device_Name AS 'Asset Name'
 
-FROM igelums.
+FROM dbo.
                        THINCLIENT tc
-	 JOIN igelums.ASSET_TO_TC atc ON tc.TCID = atc.TCID
-	 JOIN igelums.ASSET_INFO ai ON atc.ASSET_ID = ai.ASSET_ID
-	 JOIN igelums.THINCLIENTISINDIRECTORY tcd  ON tc.TCID = tcd.TCID
-                 JOIN igelums.DIRECTORIES D ON tcd.DIRID = d.DIRID
+	 JOIN dbo.ASSET_TO_TC atc ON tc.TCID = atc.TCID
+	 JOIN dbo.ASSET_INFO ai ON atc.ASSET_ID = ai.ASSET_ID
+	 JOIN dbo.THINCLIENTISINDIRECTORY tcd  ON tc.TCID = tcd.TCID
+                 JOIN dbo.DIRECTORIES D ON tcd.DIRID = d.DIRID
 
 WHERE d.[Name] = @deviceGroup</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
@@ -85,7 +85,7 @@ WHERE d.[Name] = @deviceGroup</CommandText>
     <DataSet Name="DeviceGroupName">
       <Query>
         <DataSourceName>IGELDB</DataSourceName>
-        <CommandText>Select d.[Name] FROM igelums.Directories d
+        <CommandText>Select d.[Name] FROM dbo.Directories d
 ORDER BY d.[Name] ASC</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>

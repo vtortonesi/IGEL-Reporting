@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -6,7 +6,7 @@
     <DataSource Name="IGELDB">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=sqldev;Initial Catalog=rmdb</ConnectString>
+        <ConnectString>Data Source=umswindows\IGEL605;Initial Catalog=rmdb</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -26,11 +26,11 @@
       tc.tcname AS 'Device',
       p.[name] 'Profile Name'
 
-FROM igelums.PROFILES p JOIN igelums.DIRECTORYHASPROFILE dp ON p.profileid = dp.profileid 
-JOIN igelums.DIRECTORIES d ON dp.dirid = d.dirid
+FROM dbo.PROFILES p JOIN dbo.DIRECTORYHASPROFILE dp ON p.profileid = dp.profileid 
+JOIN dbo.DIRECTORIES d ON dp.dirid = d.dirid
 
-JOIN igelums.THINCLIENTISINDIRECTORY tcd ON d.DIRID = tcd.DIRID
-JOIN igelums.THINCLIENT tc ON tcd.TCID = tc.TCID
+JOIN dbo.THINCLIENTISINDIRECTORY tcd ON d.DIRID = tcd.DIRID
+JOIN dbo.THINCLIENT tc ON tcd.TCID = tc.TCID
 
 WHERE d.[NAME] = @directoryname</CommandText>
       </Query>
@@ -48,7 +48,7 @@ WHERE d.[NAME] = @directoryname</CommandText>
     <DataSet Name="DeviceGroupNames">
       <Query>
         <DataSourceName>IGELDB</DataSourceName>
-        <CommandText>SELECT [Name] FROM igelums.DIRECTORIES</CommandText>
+        <CommandText>SELECT [Name] FROM dbo.DIRECTORIES</CommandText>
       </Query>
       <Fields>
         <Field Name="Name">
@@ -849,6 +849,6 @@ EZXD6HYTPB9mG1gccmKGcWEbacd+xSI2mejCW+QTj+P93ZOwZMPeIlnQK3EBDYdzQLZu2yrZpU6B04YO
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportServerUrl>http://sqldev/reportserver</rd:ReportServerUrl>
+  <rd:ReportServerUrl>http://umswindows\IGEL605/reportserver</rd:ReportServerUrl>
   <rd:ReportID>b89942cb-a2fe-45c3-9dc4-c3e573fed52d</rd:ReportID>
 </Report>
