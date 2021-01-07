@@ -34,6 +34,6 @@ When IGEL Reporting has been downloaded, there are two PowerShell configuration 
 #### Note:  This scrript needs to be run with elevated credentials, as there is a module being installed.
 
 ## How to Run
-Once the configuration scripts have been run browse to the SSRS server name and open the ReportServer page (e.g. http: //igelserver/reportserver).  From there drill into IGEL Reporting > RDL and choose Home Page
+Once the configuration scripts have been run, browse to the SSRS server and open the ReportServer page (e.g. http: //igelserver/reportserver).  From there drill into IGEL Reporting > RDL and choose Home Page
 
 #### Note: It's recommended to Bookmark the Home Page for future use.
