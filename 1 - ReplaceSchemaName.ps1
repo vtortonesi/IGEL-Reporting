@@ -26,7 +26,7 @@ $execPolicy = Get-ExecutionPolicy
 
 #Prompt user for schema name and validate if schema name needs to be changed
 
-$isSchema = Read-Host " Is the IGEL database schema named igelums: Enter (Y) or (N)"
+$isSchema = Read-Host " Is the IGEL database schema named dbo: Enter (Y) or (N)"
     if($isSchema -eq 'Y') {
             Write-Output "No additional changes are needed, exiting script"
             Start-Sleep -Seconds 2
@@ -42,7 +42,7 @@ $isSchema = Read-Host " Is the IGEL database schema named igelums: Enter (Y) or 
 #Change database schema name in each .rdl file
 $files | ForEach-Object{
 
-    (Get-Content -Path $_.FullName).Replace('igelums',$schemaName) | Set-Content -Path $_.FullName
+    (Get-Content -Path $_.FullName).Replace('dbo',$schemaName) | Set-Content -Path $_.FullName
 }
 
 Write-Output "Schema name changed in Report .rdl files"
@@ -51,7 +51,7 @@ start-sleep -Seconds 1
 #Change database schema name in drill down reports for each .rdl file
 $drillDown | ForEach-Object{
 
-    (Get-Content -Path $_.FullName).Replace('igelums',$schemaName) | Set-Content -Path $_.FullName
+    (Get-Content -Path $_.FullName).Replace('dbo',$schemaName) | Set-Content -Path $_.FullName
 }
 
 Write-Output "Schema name changed in drill down .rdl files"
