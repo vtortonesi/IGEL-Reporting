@@ -26,7 +26,7 @@ Prior to running any reports, the following will need to be installed:
 
 ### Scripts
 When IGEL Reporting has been downloaded, there are two PowerShell configuration scripts to be run:
-1.  replaceSchemaName.ps1 - This  will rename the schema referenced in each SQL Query.  The script will prompt and validate if the schema name is igelums. If it's not, enter the schema name and it will rename the schema reference in each SQL query in the .rdl files.
+1.  replaceSchemaName.ps1 - This  will rename the schema referenced in each SQL Query.  The script will prompt and validate if the schema name is dbo. If it's not, enter the schema name and it will rename the schema reference in each SQL query in the .rdl files.
    
 2.  IGEL_Reporting_Configuration.ps1 - This will create the SSRS folders, upload the reports, as well create and configure the datasource referenced in the reports.
 
