@@ -39,7 +39,7 @@ Write-Output "Enter SSRS configuration values"
 Start-Sleep -Seconds 1
 
 $reportServer = Read-Host 'Please Enter Your Report Server address, which is called Web Service URL in Reporting Service Configuration Manager'
-$ssrsServer = Read-host "Please Enter SSRS server name.  If database is in named instance enter as: server\instance"
+$ssrsServer = Read-host "Please Enter SSRS server name.  If database is in a named instance enter as: server\instance"
 $dbname = Read-Host "Please Enter IGEL Database name"
 
 #endregionVariablePrompts
