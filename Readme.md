@@ -21,7 +21,7 @@ Prior to running any reports, the following will need to be installed:
   3.  Report Server configured
   4.  Reporting Services web service running and validated a connection can be made to the ReportServer site
    
-  #### Note: Please see the Word document provided as a guide for a basic SSRS installation.
+  #### Note: Please see the Word document provided above as a guide for a basic SSRS installation.
 
 
 ### Scripts
