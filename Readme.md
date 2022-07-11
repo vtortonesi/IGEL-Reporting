@@ -30,7 +30,7 @@ When IGEL Reporting has been downloaded, there are two PowerShell configuration 
    
 2.  IGEL_Reporting_Configuration.ps1 - This will create the SSRS folders, upload the reports, as well create and configure the datasource referenced in the reports.
 
-3.  Once installation is complete, go to the Datasource folder and select the credentials to use for the datasource (i.e. the account that will query the IGEL Database).  By default, the configuration script sets it to run without credentials. 
+3.  Once installation is complete, go to the datasource folder and select the credentials to use for the datasource (i.e. the account that will query the IGEL Database).  By default, the configuration script sets it to run without credentials. 
 #### Note:  This scrript needs to be run with elevated credentials, as there is a module being installed.
 
 ## How to Run
